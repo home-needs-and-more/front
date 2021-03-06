@@ -14,6 +14,8 @@ import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
+import { ServiceComponent } from './service/service.component';
+
 
 @NgModule({
     imports: [
@@ -27,6 +29,7 @@ import { NgbdModalContent } from './modal/modal.component';
     declarations: [
         ComponentsComponent,
         BasicelementsComponent,
+        ServiceComponent,
         NavigationComponent,
         TypographyComponent,
         NucleoiconsComponent,
