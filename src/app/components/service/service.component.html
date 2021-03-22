@@ -1,7 +1,7 @@
 <div class="section section-blog">
     <div class="container">
       <div class="row">
-        <div class="col-md-4" *ngFor="let service of services">
+        <div class="col-md-4" *ngFor="let service of services" (click)="open(content)">
             <div class="card card-blog">
               <div class="card-image">
                 <a href="#pablo">
@@ -23,3 +23,45 @@
       </div>
     </div>
   </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Book a service</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="dateOfBirth">Best way to contact</label>
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Description</label>
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="Description" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Date</label>
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Book</button>
+    </div>
+  </ng-template>
