@@ -21,7 +21,7 @@ getAll() {
     return data;
   })
 }
-create(newWorkRequests : WorkRequestsModule) {
+create(newWorkRequests : any) {
   this.http.post(this.workRequestsServicesRoute.create,newWorkRequests).subscribe(data => {
     return data;
   })

@@ -1,65 +1,74 @@
 <div class="section section-blog">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4" *ngFor="let service of services" (click)="open(content,service)">
-            <div class="card card-blog">
-              <div class="card-image">
-                <a href="#pablo">
-                  <img class="img img-raised" src="../assets/img/Jobs/{{service.image}}">
-                </a>
-              </div>
-              <div class="card-body">
-                <h6 *ngIf="service.price" class="card-category text-info">{{service.price}}</h6>
-                <h5 class="card-title">
-                  <a href="#pablo">{{service.name}}</a>
-                </h5>
-                <p class="card-description">
-                  {{service.description}}
-                </p>
-                
-              </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let service of services" (click)="open(content,service)">
+        <div class="card card-blog">
+          <div class="card-image">
+            <a href="#pablo">
+              <img class="img img-raised" src="../assets/img/Jobs/{{service.image}}">
+            </a>
           </div>
+          <div class="card-body">
+            <h6 *ngIf="service.price" class="card-category text-info">{{service.price}}</h6>
+            <h5 class="card-title">
+              <a href="#pablo">{{service.name}}</a>
+            </h5>
+            <p class="card-description">
+              {{service.description}}
+            </p>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Book a service</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Book a service</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <label for="Email">Email</label>
+      <div class="input-group">
+        <input id="email" type="text" class="form-control" placeholder="Email" [(ngModel)]="email">
+      </div>
     </div>
-    <div class="modal-body">
-      <form >
-        <div class="form-group">
-          <label for="dateOfBirth">Best way to contact</label>
-          <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <div class="input-group">
-            <input id="description" class="form-control" placeholder="Description" name="description" ngbDatepicker #dp="ngbDatepicker">
-            
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="dateOfBirth">Date</label>
-          <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-            </div>
-          </div>
-        </div>
-      </form>
+    <div class="row">
+      <label for="Phone number">Phone number</label>
+      <div class="input-group">
+        <input id="Phone number" type="text" class="form-control" placeholder="Phone number" [(ngModel)]="phoneNumber">
+      </div>
     </div>
-    <div class="modal-footer">
-      <button  type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');createWorkRequest()">Book</button>
+    <div class="row">
+      <label for="description">description</label>
+      <div class="input-group">
+        <input id="description" type="textarea" class="form-control" placeholder="description" [(ngModel)]="description">
+      </div>
     </div>
-  </ng-template>
+    <div class="row">
+      <div class="col-md-12">
+      <label for="description">Address</label>
+    </div>
+      <div class="input-group col-md-3">
+        <input id="description" type="text" class="form-control" placeholder="street" [(ngModel)]="street">
+      </div>
+      <div class="input-group col-md-3">
+        <input id="description" type="text" class="form-control" placeholder="city" [(ngModel)]="city">
+      </div>
+      <div class="input-group col-md-3">
+        <input id="description" type="text" class="form-control" placeholder="state" [(ngModel)]="state">
+      </div>
+      <div class="input-group col-md-3">
+        <input id="description" type="text" class="form-control" placeholder="zipCode" [(ngModel)]="zipCode">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark"
+      (click)="modal.close('Save click');createWorkRequest()">Book</button>
+  </div>
+</ng-template>
