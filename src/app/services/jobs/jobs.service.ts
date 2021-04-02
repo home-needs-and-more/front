@@ -18,9 +18,7 @@ export class JobsService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    this.http.get(this.jobsServicesRoute.getAll).subscribe(data => {
-      return data;
-    })
+    return this.http.get(this.jobsServicesRoute.getAll);
   }
   create(newJob : JobModule) {
     this.http.post(this.jobsServicesRoute.create,newJob).subscribe(data => {

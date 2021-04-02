@@ -1,15 +1,15 @@
 <div class="section section-blog">
     <div class="container">
       <div class="row">
-        <div class="col-md-4" *ngFor="let service of services" (click)="open(content)">
+        <div class="col-md-4" *ngFor="let service of services" (click)="open(content,service)">
             <div class="card card-blog">
               <div class="card-image">
                 <a href="#pablo">
-                  <img class="img img-raised" src="../assets/img/{{service.image}}">
+                  <img class="img img-raised" src="../assets/img/Jobs/{{service.image}}">
                 </a>
               </div>
               <div class="card-body">
-                <h6 class="card-category text-info">{{service.price}}$</h6>
+                <h6 *ngIf="service.price" class="card-category text-info">{{service.price}}</h6>
                 <h5 class="card-title">
                   <a href="#pablo">{{service.name}}</a>
                 </h5>
@@ -31,7 +31,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <form>
+      <form >
         <div class="form-group">
           <label for="dateOfBirth">Best way to contact</label>
           <div class="input-group">
@@ -42,12 +42,10 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="dateOfBirth">Description</label>
+          <label for="description">Description</label>
           <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="Description" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-            </div>
+            <input id="description" class="form-control" placeholder="Description" name="description" ngbDatepicker #dp="ngbDatepicker">
+            
           </div>
         </div>
         <div class="form-group">
@@ -62,6 +60,6 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Book</button>
+      <button  type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');createWorkRequest()">Book</button>
     </div>
   </ng-template>

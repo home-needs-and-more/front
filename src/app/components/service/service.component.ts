@@ -9,24 +9,18 @@ import {JobModule} from '../../model/Job/job/job.module';
 })
 export class ServiceComponent implements OnInit {
   closeResult = '';
-  services = [{
-    name : "PAINTING",
-    price : "2,29",
-    image : "157522576_754810258793830_1658028758824288167_n.jpg",
-    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
-  },
-  {
-    name : "PAINTING",
-    price : "2,29",
-    image : "157522576_754810258793830_1658028758824288167_n.jpg",
-    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
-  }]
+  services : any;
   constructor(private jobsService : JobsService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
+     this.jobsService.getAll().subscribe(data => {
+      console.log(data);
+      this.services=data;
+    });
     
   }
-  open(content) {
+  open(content,service) {
+    console.log(service);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
